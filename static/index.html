@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Speech to Text</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header>
+        <h1>Local Speech to Text</h1>
+        <p class="subtitle">本地 AI 语音识别 · 中文 / English</p>
+      </header>
+
+      <section class="panel">
+        <div class="row">
+          <label for="language">Recognition language</label>
+          <select id="language">
+            <option value="zh">中文（普通话）</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <div class="row record-row">
+          <button id="startBtn" class="primary" type="button">Start Recording</button>
+          <button id="stopBtn" class="danger" type="button" disabled>Stop Recording</button>
+          <div class="recording-meta">
+            <span id="status">Idle</span>
+            <span class="dot">·</span>
+            <span id="timer">00:00</span>
+          </div>
+        </div>
+
+        <label class="checkbox">
+          <input id="liveMode" type="checkbox" />
+          Enable real-time preview (experimental)
+        </label>
+
+        <p class="hint">
+          Microphone recording is limited to 60 seconds. The transcript appears after you stop.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Or upload an audio file</h2>
+        <div class="row upload-row">
+          <input id="fileInput" type="file" accept=".wav,.webm,.ogg,.mp3,.m4a,.flac,audio/*" />
+          <button id="uploadBtn" type="button">Upload &amp; Transcribe</button>
+        </div>
+        <p id="fileName" class="hint">No file selected.</p>
+      </section>
+
+      <section class="panel" id="livePanel" hidden>
+        <h2>Live transcript (real-time preview)</h2>
+        <textarea id="liveResult" readonly placeholder="Live preview will appear here..."></textarea>
+      </section>
+
+      <section class="panel result-panel">
+        <div class="result-header">
+          <h2>Transcript</h2>
+          <button id="copyBtn" type="button" disabled>Copy</button>
+        </div>
+        <textarea id="result" readonly placeholder="Recognition result will appear here..."></textarea>
+        <div class="metrics">
+          <span>Language: <strong id="resultLanguage">-</strong></span>
+          <span>Audio duration: <strong id="duration">-</strong></span>
+          <span>Processing time: <strong id="processing">-</strong></span>
+        </div>
+      </section>
+
+      <div id="error" class="error" role="alert" hidden></div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

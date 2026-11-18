@@ -1,0 +1,9 @@
+chinese.wav
+你好，欢迎使用本地语音识别系统。这是一段用于测试的中文语音。
+
+english.wav
+Hello, welcome to the local speech to text system. This is a short English test recording.
+
+Generation note:
+Both samples were generated locally with macOS `say` (voices: Tingting / Fred),
+encoded as 16 kHz mono PCM WAV. They are used only for functional verification.
